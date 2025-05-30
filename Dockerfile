@@ -3,7 +3,10 @@ FROM eclipse-temurin:17-jdk as builder
 WORKDIR /app
 
 # Copia los archivos necesarios para construir
-COPY . .
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
 
 # Construye la aplicación (ajusta si usas Gradle)
 RUN ./mvnw clean package -DskipTests
