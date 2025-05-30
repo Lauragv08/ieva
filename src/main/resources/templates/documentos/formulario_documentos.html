@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{plantillas/principal :: head}"></head>
+<body>
+    <header th:replace="~{plantillas/principal :: header}"></header>
+    <script>
+        function handleFileLoad(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const tipo = file.type; // MIME type, ej: application/pdf
+
+            // Mostrar el tipo de archivo cargado
+            document.getElementById("formFile2").innerText = `Tipo de archivo cargado: ${tipo}`;
+            document.getElementById("tipoArchivo").value = `Tipo de archivo cargado: ${tipo}`;
+            // Puedes validar si es PDF o Word
+            if (tipo === "application/pdf") {
+                console.log("Es un PDF.");
+            } else if (
+                tipo === "application/msword" || 
+                tipo === "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ) {
+                console.log("Es un documento Word.");
+            } else {
+                console.log("Tipo de archivo no permitido.");
+            }
+        }
+    </script>
+
+    <style>
+        .file-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 300px;
+        }
+    
+        .file-wrapper input[type="file"] {
+            width: 100%;
+        }
+    
+        .file-wrapper .file-type {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #555;
+            pointer-events: none;
+        }
+        
+        /* Estilo para el botón de regreso */
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 15px;
+            margin-right: 10px;
+        }
+        .btn-back:hover {
+            background-color: #5a6268;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+
+    <div class="container py-4 cw-60">
+        <div class="card bg-light">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="text-secondary mb-0" th:text="${titulo}">Formulario Documento</h3>
+                <!-- Botón de regreso -->
+                <a th:href="@{/ieva/egresadoconsultar/} + ${documento.egresado.id}" class="btn btn-back">
+                    <i class="bi bi-arrow-left"></i> Regresar
+                </a>
+            </div>
+
+            <div class="card-body shadow-lg p-3">
+                <form method="post" th:object="${documento}" th:action="@{/documento/documentoGuardar}" enctype="multipart/form-data">
+                    <input type="hidden" th:field="*{egresado.id}" />
+    
+                    <!-- documentos accept=".pdf,.doc,.docx"  onchange="handleFileLoad(event)" -->
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Archivo</label>
+                        <input type="file" class="form-control" id="formFile2" name="archivo" onchange="document.getElementById('fileType').textContent = this.files.length ? this.files[0].type : ''">
+                        <span class="file-type" id="fileType"></span>
+                    </div>
+                    
+                    <!-- Descripción -->
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label" for="descripcion">Descripción</label>
+                        <div class="col-sm-9">
+                            <input type="text" th:field="*{descripcion}" class="form-control">
+                            <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+                        </div>
+                    </div>
+          
+                    <div class="mb-3 row mt-4">
+                        <div class="col-sm-6 d-flex">
+                            <!-- Botón de regreso alternativo (opcional) -->
+                            <a th:href="@{/ieva/egresadoconsultar/} + ${documento.egresado.id}" class="btn btn-outline-secondary me-2">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <input type="submit" th:value="${btn_accion}" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+
+    <footer th:replace="~{plantillas/principal :: footer}"></footer>
+</body>
+</html>

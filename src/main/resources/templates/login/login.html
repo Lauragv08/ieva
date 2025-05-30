@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Institución Educativa Villa de Andes </title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 65;
+            background: url('/img/escudo.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+    
+        .fondo-color {
+            background-color: rgba(160, 227, 247, 0.836);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .overlay-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        /* Rectángulo blanco translúcido */
+        .overlay {
+            background-color: rgba(197, 194, 194, 0.849); /* translúcido */
+            width: 400px;
+            height: 100vh;
+            padding: 30px 25px;
+            border-radius: 0;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.685);
+            overflow-y: auto;
+        }
+
+        .overlay img.logo {
+            width: 200px;
+            margin-bottom: 15px;
+        }
+
+        .overlay h2 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+        }
+
+		input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #a8a8a8;
+    border-radius: 5px;
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* transiciones suaves */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border: 2px solid rgb(146, 146, 146);
+    box-shadow: 0 0 5px #1d4b5a;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border: 2px solid #1d4b5a;
+}
+
+        .form-check {
+            text-align: left;
+            margin-bottom: 15px;
+			font-size: 13px;
+			color: #636262;
+			
+        }
+
+        .btn {
+            width: 70%;
+            padding: 10px;
+            background-color: #1d4b5a;
+            color: #ebebebee;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register-link {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+   
+    <div class="fondo-color"></div>
+
+   
+    <div class="overlay-container">
+        <div class="overlay">
+            <img src="/img/escudo.png" alt="Escudo" class="logo">
+            <h2>Institución educativa<br>Villa de los Andes</h2>
+
+            <form th:action="@{/login}" method="post">
+                <input type="text" name="username" id="username" placeholder="Usuario" required autofocus />
+                <input type="password" name="password" id="password" placeholder="Contraseña" required />
+                
+                <div class="form-check">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Recordar</label>
+                </div>
+
+                <input type="submit" class="btn" value="Ingresar">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            </form>
+
+ 
+
+            <div class="social-icons">
+              
+               
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

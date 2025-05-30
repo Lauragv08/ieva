@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{plantillas/principal :: head}"></head>
+<body>
+  <header th:replace="~{plantillas/principal :: header}"></header>
+
+  <div class="container my-5">
+    <div class="text-center mb-4">
+      <h1 class="text-secondary">Institución Educativa Villa de los Andes</h1>
+      <img th:src="@{/img/escudo.png}" class="escudo img-fluid mx-auto d-block" alt="Escudo de la Institución" />
+    </div>
+
+    <section class="mb-5">
+      <h2 class="text-secondary">Razón Social</h2>
+      <p>Institución Educativa Villa de los Andes</p>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-secondary">Objeto Social de la Organización</h2>
+      <p>Esta es una organización oficial, sin ánimo de lucro, reconocida por Resolución N° 1678 del 19 de abril de 2022, por la cual se renueva el reconocimiento oficial a la Institución Educativa Villa de los Andes para la formación en los niveles de preescolar, básica primaria, básica secundaria y media, en jornada mañana y tarde, además de la educación de adultos en la jornada nocturna. Cuenta con una sede principal y siete sedes anexas en las cuales se ofrece la educación en los niveles de preescolar hasta básica primaria.</p>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-secondary">Representante Legal</h2>
+      <p>Mabel Andrea Gómez Acosta</p>
+      <p>Coordinadora</p>
+      <p>Celular: 3138322128</p>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-secondary">Reseña Histórica</h2>
+      <p>Todo comienza desde los primeros pobladores de Belén, cuando el señor Rufino Chindicué, junto con los trabajadores de la carretera La Plata Popayán, aserradores y otros migrantes que llegaron a estos territorios desde departamentos como Nariño y Cauca, se instalaron y constituyeron este poblado. Consideraron necesario tener una escuela donde sus hijos pudieran aprender a leer y escribir. Por esa razón, en 1950, el señor Rufino Chindicué donó el predio en el cual se encuentran nuestras instalaciones para construir la primera escuela hecha en madera, que recibió por nombre “Escuela Belén”.</p>
+      <!-- Continúa con el resto de la reseña histórica, dividiéndola en párrafos según sea necesario -->
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-secondary">Misión</h2>
+      <p>La Institución Educativa Villa de los Andes del municipio de La Plata Huila es un establecimiento educativo público que forma integralmente a sus estudiantes en los niveles preescolar, básica primaria, básica secundaria, media y media técnica; haciendo énfasis en el desarrollo de la persona humana, el favorecimiento de la inclusión y la diversidad, para que desde su quehacer cotidiano emprendan y contribuyan con sus conocimientos y actitudes al desarrollo de la región, en el marco de las dinámicas de globalización en los aspectos social, cultural, político, deportivo, religioso, empresarial, ambiental y comunitario.</p>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-secondary">Visión</h2>
+      <p>La Institución Educativa Villa de los Andes del Centro Poblado Belén, para el año 2030, será reconocida a nivel departamental y nacional como un establecimiento educativo inclusivo destacado por la formación de personas íntegras, a favor de la transformación social, económica, ambiental, investigativa y política.</p>
+    </section>
+  </div>
+
+  <footer th:replace="~{plantillas/principal :: footer}"></footer>
+</body>
+</html>
